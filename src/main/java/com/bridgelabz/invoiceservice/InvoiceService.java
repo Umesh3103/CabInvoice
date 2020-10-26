@@ -9,6 +9,10 @@ public class InvoiceService {
 	private static final double MINIMUM_FARE = 5.0;
 	private RideRepository rideRepository;
 
+	public InvoiceService() {
+		this.rideRepository = new RideRepository();
+	}
+
 	/**
 	 * 
 	 * @param distance
@@ -26,10 +30,30 @@ public class InvoiceService {
 	 * @return total fare, number of rides, average fare
 	 */
 	public InvoiceSummary calculateFare(Ride[] rides) {
+		if(rides==null){
+			
+		}
 		double totalFare=0;
 		for(Ride ride :rides)
 			totalFare += calculateFare(ride.getDistance(),ride.getTime());
 		return new InvoiceSummary(rides.length, totalFare);
+	}
+	/**
+	 * 
+	 * @param userId
+	 * @param rides
+	 */
+	public void addRides(String userId, Ride[] rides) {
+		rideRepository.addRides(userId,rides);
+	}
+	
+	/**
+	 * 
+	 * @param userId
+	 * @return rides
+	 */
+	public InvoiceSummary getInvoiceSummary(String userId) {
+		return this.calculateFare(rideRepository.getRides(userId));
 	}
 
 }
