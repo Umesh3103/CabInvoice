@@ -20,4 +20,16 @@ public class InvoiceService {
 		return Math.max(totalFare, MINIMUM_FARE);
 	}
 
+	/**
+	 * 
+	 * @param rides
+	 * @return total fare, number of rides, average fare
+	 */
+	public InvoiceSummary calculateFare(Ride[] rides) {
+		double totalFare=0;
+		for(Ride ride :rides)
+			totalFare += calculateFare(ride.getDistance(),ride.getTime());
+		return new InvoiceSummary(rides.length, totalFare);
+	}
+
 }
