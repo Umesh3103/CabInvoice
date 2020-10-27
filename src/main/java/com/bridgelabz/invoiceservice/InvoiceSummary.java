@@ -7,8 +7,8 @@ public class InvoiceSummary {
 	private double average;
 
 	public InvoiceSummary(int numOfrides, double totalFare) {
-		this.numOfRides=numOfRides;
-		this.totalFare=totalFare;
+		this.numOfRides = numOfRides;
+		this.totalFare = totalFare;
 		this.average = this.totalFare / this.numOfRides;
 	}
 
@@ -43,5 +43,4 @@ public class InvoiceSummary {
 		return true;
 	}
 
-	
 }
