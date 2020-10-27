@@ -4,8 +4,10 @@ public class Ride {
 
 	private double distance;
 	private int time;
+	public final CabRide cabRide;
 
-	public Ride(double distance, int time) {
+	public Ride(CabRide ride, double distance, int time) {
+		this.cabRide=ride;
 		this.distance = distance;
 		this.time = time;
 	}
